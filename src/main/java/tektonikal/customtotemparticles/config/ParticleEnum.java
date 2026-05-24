@@ -31,7 +31,7 @@ public enum ParticleEnum implements NameableEnum {
             case TOTEM_OF_UNDYING -> ParticleTypes.TOTEM_OF_UNDYING;
             case CRIT -> ParticleTypes.CRIT;
             case ENCHANTED_HIT -> ParticleTypes.ENCHANTED_HIT;
-            case EFFECT -> ParticleTypes.EFFECT;
+            case EFFECT -> (ParticleEffect) ParticleTypes.EFFECT;
         };
     }
 
