@@ -50,7 +50,7 @@ public class YACLConfig {
         @SerialEntry public boolean useEmitter = true;
             @SerialEntry public int emitterLifetime = 25;
             @SerialEntry public float emitterYOffset = -0.2F;
-            @SerialEntry public boolean emitterMovesWithPlayer = false;
+            @SerialEntry public boolean emitterMovesWithPlayer = true;
     //Miscellaneous
         @SerialEntry public boolean hideOnGround = false;
         @SerialEntry public boolean useCollisions = true;
@@ -200,7 +200,7 @@ public class YACLConfig {
     public static Option<Boolean> o_emitterMovesWithPlayer = Option.<Boolean>createBuilder()
             .name(Text.of("Follow"))
             .description(OptionDescription.of(Text.of("Whether the emitter follows the entity bound to it.")))
-            .binding(false, () -> CONFIG.instance().emitterMovesWithPlayer, newVal -> CONFIG.instance().emitterMovesWithPlayer = newVal)
+            .binding(true, () -> CONFIG.instance().emitterMovesWithPlayer, newVal -> CONFIG.instance().emitterMovesWithPlayer = newVal)
             .controller(TickBoxControllerBuilder::create)
             .build();
     public static Option<Integer> o_lightLevel = Option.<Integer>createBuilder()

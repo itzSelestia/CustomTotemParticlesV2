@@ -12,18 +12,18 @@ repositories {
         url = "https://api.modrinth.com/maven"
     }
     maven {
-        name 'Xander Maven'
-        url 'https://maven.isxander.dev/releases'
+        name = 'Xander Maven'
+        url = 'https://maven.isxander.dev/releases'
     }
     maven {
-        name 'Xander Maven'
-        url 'https://maven.isxander.dev/snapshots'
+        name = 'Xander Maven'
+        url = 'https://maven.isxander.dev/snapshots'
     }
     maven {
         url = "https://maven.terraformersmc.com/releases"
     }
-    maven { url "https://jitpack.io" }
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    maven { url = "https://jitpack.io" }
+    maven { url = "https://oss.sonatype.org/content/repositories/snapshots" }
 }
 dependencies {
     // To change the versions see the gradle.properties file
@@ -37,15 +37,19 @@ dependencies {
 }
 
 processResources {
-    inputs.property "version", project.version
-    inputs.property "minecraft_version", project.minecraft_version
-    inputs.property "loader_version", project.loader_version
-    filteringCharset "UTF-8"
+    def modVersion = project.version
+    def targetMinecraftVersion = project.minecraft_version
+    def targetLoaderVersion = project.loader_version
+
+    inputs.property "version", modVersion
+    inputs.property "minecraft_version", targetMinecraftVersion
+    inputs.property "loader_version", targetLoaderVersion
+    filteringCharset = "UTF-8"
 
     filesMatching("fabric.mod.json") {
-        expand "version": project.version,
-                "minecraft_version": project.minecraft_version,
-                "loader_version": project.loader_version
+        expand "version": modVersion,
+                "minecraft_version": targetMinecraftVersion,
+                "loader_version": targetLoaderVersion
     }
 }
 

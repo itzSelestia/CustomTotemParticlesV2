@@ -43,7 +43,18 @@ public abstract class EmitterParticleMixin extends NoRenderParticle {
     public void CustomTotemParticles$emitterInit(EmitterParticle instance) {
         //silly easter egg, but also useful for debugging
         if (YACLConfig.CONFIG.instance().multiplier == 0) {
-            world.addParticleClient(YACLConfig.CONFIG.instance().particleType.getParticleTypes(), entity.getBodyX(random.nextFloat() * 2.0F - 1.0F / 4.0), entity.getBodyY((0.5 + random.nextFloat() * 2.0F - 1.0F / 4.0)), entity.getBodyZ(random.nextFloat() * 2.0F - 1.0F / 4.0), random.nextFloat() * 2.0F - 1.0F, random.nextFloat() * 2.0F - 1.0F + 0.2F, random.nextFloat() * 2.0F - 1.0F);
+            double d = random.nextFloat() * 2.0F - 1.0F;
+            double e = random.nextFloat() * 2.0F - 1.0F;
+            double f = random.nextFloat() * 2.0F - 1.0F;
+            world.addParticleClient(
+                    YACLConfig.CONFIG.instance().particleType.getParticleTypes(),
+                    entity.getBodyX(d / 4.0),
+                    entity.getBodyY(0.5 + e / 4.0),
+                    entity.getBodyZ(f / 4.0),
+                    d + velocityX,
+                    e + 0.2F + velocityY,
+                    f + velocityZ
+            );
             markDead();
         }
     }
@@ -72,7 +83,15 @@ public abstract class EmitterParticleMixin extends NoRenderParticle {
                         }
                         h += YACLConfig.CONFIG.instance().emitterYOffset;
                     }
-                    world.addParticleClient(YACLConfig.CONFIG.instance().particleType.getParticleTypes(), g, h, j, d, e + 0.2F, f);
+                    world.addParticleClient(
+                            YACLConfig.CONFIG.instance().particleType.getParticleTypes(),
+                            g,
+                            h,
+                            j,
+                            d + velocityX,
+                            e + 0.2F + velocityY,
+                            f + velocityZ
+                    );
                 }
                 ++emitterAge;
                 if (emitterAge >= maxEmitterAge) {
