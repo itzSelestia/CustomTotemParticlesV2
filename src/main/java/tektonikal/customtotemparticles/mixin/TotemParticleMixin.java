@@ -6,6 +6,7 @@ import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.particle.TotemParticle;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.LightCoordsUtil;
 import net.minecraft.util.Mth;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
@@ -348,7 +349,8 @@ public abstract class TotemParticleMixin extends SimpleAnimatedParticle {
 			return YACLConfig.CONFIG.instance().lightLevel;
 		} else {
 			BlockPos blockPos = BlockPos.containing(x, y, z);
-			return level.hasChunkAt(blockPos) ? LevelRenderer.getLightCoords(level, blockPos) : 0;
+			return level.hasChunkAt(blockPos) ? LightCoordsUtil.getLightCoords(level, blockPos) : 0;
+
 		}
 	}
 
