@@ -164,6 +164,10 @@ public abstract class TotemParticleMixin extends SimpleAnimatedParticle {
 
 	@Override
 	public void tick() {
+		if (!YACLConfig.CONFIG.instance().modEnabled) {
+			super.tick();
+			return;
+		}
 		if (age++ >= lifetime || alpha <= 0 || quadSize <= 0 || (YACLConfig.CONFIG.instance().hideOnGround && onGround)) {
 			remove();
 			return;
@@ -350,6 +354,9 @@ public abstract class TotemParticleMixin extends SimpleAnimatedParticle {
 
 	@Override
 	public float getQuadSize(float tickDelta) {
+		if (!YACLConfig.CONFIG.instance().modEnabled) {
+			return super.getQuadSize(tickDelta);
+		}
 		return net.minecraft.util.Mth.lerp(tickDelta, prevScale, quadSize);
 	}
 

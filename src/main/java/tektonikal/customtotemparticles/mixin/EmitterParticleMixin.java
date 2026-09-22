@@ -43,7 +43,7 @@ public abstract class EmitterParticleMixin extends NoRenderParticle {
     public void CustomTotemParticles$emitterInit(TrackingEmitter instance) {
         //silly easter egg, but also useful for debugging
         if (YACLConfig.CONFIG.instance().multiplier == 0) {
-            level.addParticle(YACLConfig.CONFIG.instance().particleType.getParticleTypes(), entity.getRandomX(random.nextFloat() * 2.0F - 1.0F / 4.0), entity.getY((0.5 + random.nextFloat() * 2.0F - 1.0F / 4.0)), entity.getRandomZ(random.nextFloat() * 2.0F - 1.0F / 4.0), random.nextFloat() * 2.0F - 1.0F, random.nextFloat() * 2.0F - 1.0F + 0.2F, random.nextFloat() * 2.0F - 1.0F);
+            level.addParticle(YACLConfig.CONFIG.instance().particleType.getParticleTypes(), entity.getRandomX((random.nextFloat() * 2.0F - 1.0F) / 4.0), entity.getY(0.5 + (random.nextFloat() * 2.0F - 1.0F) / 4.0), entity.getRandomZ((random.nextFloat() * 2.0F - 1.0F) / 4.0), random.nextFloat() * 2.0F - 1.0F, random.nextFloat() * 2.0F - 1.0F + 0.2F, random.nextFloat() * 2.0F - 1.0F);
             remove();
         }
     }
